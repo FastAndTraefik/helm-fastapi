@@ -1,0 +1,1 @@
+Helm chart for FastAPI to deploy on EKS

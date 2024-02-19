@@ -1,0 +1,22 @@
+deployment:
+  image: 690456518676.dkr.ecr.us-east-1.amazonaws.com/fastandtraefik
+  imagePullPolicy: Always
+  tag: latest
+  replicaCount: 2
+  port: 8000
+  dbName: fastapi
+  dbEndPoint: db
+  
+service:
+  type: ClusterIP
+  port: 8000
+  targetPort: 8000
+
+hpa:
+  min: 2
+  max: 4
+  percent: 80
+
+ingress:
+  http_port: 80
+  https_port: 443
