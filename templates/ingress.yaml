@@ -6,17 +6,17 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":{{ .Values.ingress.https_port }}}, {"HTTP":{{ .Values.ingress.http_port }}}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm-pca:us-east-1:690456518676:certificate-authority/0fd28edb-95ea-46dc-819c-62be777c4eb9
-    alb.ingress.kubernetes.io/ssl-redirect: '443'   
+    alb.ingress.kubernetes.io/certificate-arn: 'arn:aws:acm-pca:us-east-1:690456518676:certificate-authority/0fd28edb-95ea-46dc-819c-62be777c4eb9'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
 spec:
   ingressClassName: alb
   rules:
   - http:
-        paths:           
+        paths:
           - path: /
             pathType: Prefix
             backend:
               service:
                 name: fastapi
                 port:
-                  number: {{ .Values.service.port }} 
+                  number: {{ .Values.service.port }}
